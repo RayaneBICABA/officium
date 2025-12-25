@@ -1,7 +1,6 @@
 package com.pankassi.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -10,6 +9,10 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "REFRESHTOKEN")
 public class RefreshToken {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "refreshTokenId")
+    private Long refreshTokenId;
 }
