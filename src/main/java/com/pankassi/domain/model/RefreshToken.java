@@ -26,5 +26,5 @@ public class RefreshToken {
 
     @Column(name = "token",nullable = false)
     private String token;
-    
+
 }
