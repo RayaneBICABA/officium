@@ -1,7 +1,10 @@
 package com.pankassi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,4 +24,17 @@ public class Role {
 
     @Column(name = "roleDescription",nullable = false)
     private String roleDescription;
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonBackReference
+    private Set<Client> client;
+
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "RoleResource",
+            joinColumns = @JoinColumn(name = "roleId"),
+            inverseJoinColumns = @JoinColumn(name = "resourceId")
+    )
+    private Set<Resource> resources;
 }
