@@ -32,5 +32,4 @@ public class RefreshToken {
     @JoinColumn(name = "clientId") // Creation de la colonne qui doit contenir la cle etrangere (cette colonne se nomme clientId)
     @JsonBackReference // Ne reaffiche pas les clients
     private Client client;
-
 }
