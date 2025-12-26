@@ -1,7 +1,10 @@
 package com.pankassi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,5 +24,9 @@ public class Resource {
 
     @Column(name = "description",nullable = false)
     private String description;
+
+    @ManyToMany(mappedBy = "resources")
+    @JsonBackReference
+    private Set<Role> roles;
 
 }
