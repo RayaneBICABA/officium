@@ -58,5 +58,4 @@ public class Client {
     )
     @JsonBackReference
     private Set<Role> roles;
-
 }
