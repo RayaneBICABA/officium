@@ -1,4 +1,8 @@
 package com.pankassi.domain.repository;
 
-public interface ClientRepository {
+import com.pankassi.domain.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client,Long> {
+
 }
