@@ -15,4 +15,10 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "clientId")
     private Long clientId;
+
+    @Column(name = "roleName",nullable = false)
+    private String roleName;
+
+    @Column(name = "roleDescription",nullable = false)
+    private String roleDescription;
 }
