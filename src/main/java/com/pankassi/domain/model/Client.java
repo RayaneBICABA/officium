@@ -1,9 +1,12 @@
 package com.pankassi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -43,4 +46,17 @@ public class Client {
     public String getFullName(){
         return firstName+" "+lastName;
     }
+
+    @OneToMany(mappedBy = "client")// C'est RefreshToken qui gere la FK via son champ client
+    private List<RefreshToken> refreshTokenList;
+
+    @ManyToMany
+    @JoinTable(
+            name = "ClientRole",
+            joinColumns = @JoinColumn(name = "clientId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId")
+    )
+    @JsonBackReference
+    private Set<Role> roles;
+
 }
